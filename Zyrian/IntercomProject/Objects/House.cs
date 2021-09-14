@@ -1,16 +1,15 @@
 ﻿using Lab2.Zyrian.IntercomProject.IntercomUsers;
-using Lab2.Zyrian.IntercomProject.KeyManipulations;
+using Lab2.Zyrian.IntercomProject.KeyComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab2.Zyrian.IntercomProject
+namespace Lab2.Zyrian.IntercomProject.Objects
 {
     public class House
     {
-
         private Intercom _intercom = new Intercom();
         private Door _door = new Door();
         private Key _key;

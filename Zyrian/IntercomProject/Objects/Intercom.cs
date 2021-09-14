@@ -1,16 +1,15 @@
 ﻿using Lab2.Zyrian.IntercomProject.IntercomComponents;
-using Lab2.Zyrian.IntercomProject.KeyManipulations;
+using Lab2.Zyrian.IntercomProject.KeyComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab2.Zyrian.IntercomProject
+namespace Lab2.Zyrian.IntercomProject.Objects
 {
     public class Intercom
     {
-
         private KeySlot _keySlot = new();
         private KeyValidator _keyValidator = new KeyValidator();
         private static readonly string _validKeyCode = "abc-dfe-007";
@@ -43,6 +42,5 @@ namespace Lab2.Zyrian.IntercomProject
         {
             DoorUnlocked?.Invoke(this, new EventArgs());
         }
-
     }
 }

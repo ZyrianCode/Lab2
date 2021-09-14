@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Lab2.Zyrian.IntercomProject.IntercomUsers;
+using Lab2.Zyrian.IntercomProject.SceneSpecifications.ObjectHolderStrategy;
+using Lab2.Zyrian.IntercomProject.SceneSpecifications.ObjectHolderStrategy.Holders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +10,15 @@ using System.Threading.Tasks;
 namespace Lab2.Zyrian.IntercomProject.SceneSpecifications
 {
     public class IntercomSceneMenu
-    {
-        private ObjectAdder _objectAdder;
-        private ObjectHolder _objectHolder;
+    {       
+        private List<ObjectHolder> _objectHolders;
+        private ObjectHolderInteractor _interactor;
+        private ObjectAdder _objectAdder = new();
 
-        public IntercomSceneMenu(ObjectAdder objectAdder, ObjectHolder objectHolder)
+        public IntercomSceneMenu(ObjectHolderInteractor interactor, List<ObjectHolder> objectHolders)
         {
-            _objectAdder = objectAdder;
-            _objectHolder = objectHolder;
+            _interactor = interactor;
+            _objectHolders = objectHolders;
         }
 
         public string PrintMenu()
@@ -28,19 +32,21 @@ namespace Lab2.Zyrian.IntercomProject.SceneSpecifications
         {
             switch (PrintMenu())
             {
-                case "1": 
-                    _objectHolder.people.Add(_objectAdder.AddGuest()); 
+                case "1":
+                    _interactor.AddPeopleHolder();
+                    _interactor.AddPerson(_objectAdder.AddGuest());
                     
                     break;
 
-                case "2": 
-                   _objectHolder.people.Add(_objectAdder.AddHouseOwner()); 
+                case "2":
+                    _interactor.AddPeopleHolder();
+                    _interactor.AddPerson(_objectAdder.AddHouseOwner());
                     break;
 
                 default:
                     Console.WriteLine("Такого пункта меню нет!");
                     break;
             }
-        }
+        } 
     }
 }

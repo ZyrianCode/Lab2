@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab2.Zyrian.IntercomProject.SceneSpecifications
 {
-    class Serialize
+    public abstract class IntercomSceneObject
     {
     }
 }

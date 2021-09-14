@@ -1,4 +1,4 @@
-﻿using Lab2.Zyrian.IntercomProject.KeyManipulations;
+﻿using Lab2.Zyrian.IntercomProject.KeyComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
