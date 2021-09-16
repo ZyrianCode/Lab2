@@ -46,10 +46,16 @@ namespace Lab2.Zyrian.IntercomProject.Objects
                     visitor.PersonJoined += OnGuestJoined;
                     visitor.TryOpenDoor();
                 }
-                else
+                else if(visitor is HouseOwner)
                 {
                     visitor.PersonJoined += OnHouseOwnerJoined;
                     _key = PutKey((visitor as HouseOwner).PutKeyOnIntercom());
+                    visitor.TryOpenDoor();
+                }
+                else
+                {
+                    visitor.PersonJoined += OnBanditoJoined;
+                    _key = PutKey((visitor as Bandito).PutKeyOnIntercom());
                     visitor.TryOpenDoor();
                 }
             }
@@ -85,10 +91,27 @@ namespace Lab2.Zyrian.IntercomProject.Objects
             _intercom.TakeKey(_key);
 
             _intercom.IsAbleToDoorOpen(_door);
+            _intercom.DoorUnlocked -= OnDoorUnlocked;
+        } 
+        
+        /// <summary>
+        /// Срабатывает по пришествию бандита
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="eventArgs"></param>
+        public void OnBanditoJoined(object sender, EventArgs eventArgs)
+        {
+            PrintBanditoJoinedInfo();
+            _intercom.DoorUnlocked += OnDoorUnlocked;
+            _intercom.TakeKey(_key);
+
+            _intercom.IsAbleToDoorOpen(_door);
+            _intercom.DoorUnlocked -= OnDoorUnlocked;
         }
 
         private void PrintDebugOpenDoorInfo() => Console.WriteLine("Door was opened!");
         private void PrintGuestJoinedInfo() => Console.WriteLine("Hi, I'm Guest!");
         private void PrintOwnerJoinedInfo() => Console.WriteLine("Hi, I'm Owner!");
+        private void PrintBanditoJoinedInfo() => Console.WriteLine("Hi, I'm Bandito!");
     }
 }

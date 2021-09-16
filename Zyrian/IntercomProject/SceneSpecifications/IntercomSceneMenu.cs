@@ -42,7 +42,10 @@ namespace Lab2.Zyrian.IntercomProject.SceneSpecifications
                     _interactor.AddPeopleHolder();
                     _interactor.AddPerson(_objectAdder.AddHouseOwner());
                     break;
-
+                case "3":
+                    _interactor.AddPeopleHolder();
+                    _interactor.AddPerson(_objectAdder.AddBandito());
+                    break;
                 default:
                     Console.WriteLine("Такого пункта меню нет!");
                     break;

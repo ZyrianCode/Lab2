@@ -13,5 +13,6 @@ namespace Lab2.Zyrian.IntercomProject.SceneSpecifications
         public House AddHouse() => new House();
         public Guest AddGuest() => new Guest();
         public HouseOwner AddHouseOwner() => new HouseOwner();
+        public Bandito AddBandito() => new Bandito();
     }
 }
